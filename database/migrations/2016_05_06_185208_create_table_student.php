@@ -16,6 +16,7 @@ class CreateTableStudent extends Migration
             $table->increments('id')->unsignet();
             $table->integer('user_id')->unsigned();  // Пользователь
             $table->integer('group_id')->unsigned();  // Группа
+            $table->timestamps();
         });
     }
 

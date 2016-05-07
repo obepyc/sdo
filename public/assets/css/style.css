@@ -1,6 +1,7 @@
 @import url(grid.css);
 @import "http://webfonts.ru/import/opensans.css";
 @import url(font-awesome.css);
+@import url(chosen.min.css);
 
 * {margin: 0; padding: 0;}
 
@@ -21,44 +22,11 @@ table {
 	border-spacing: 0;
 }
 
+input, button, textarea {outline: none;}
+
 /*General*/
 
 .clr {clear: both;}
-
-
-
-.btn_succes {
-	color: #8aa942 !important;
-	-webkit-transition: all .3s ease;
-	-o-transition: all .3s ease;
-	transition: all .3s ease;
-}
-
-.btn_succes:hover {
-	color: #8aa942;
-}
-
-.btn_primary {
-	color: #559ffb !important;
-	-webkit-transition: all .3s ease;
-	-o-transition: all .3s ease;
-	transition: all .3s ease;
-}
-
-.btn_primary:hover {
-	color: #559ffb;
-}
-
-.btn_error {
-	color: #9a3837 !important;
-	-webkit-transition: all .3s ease;
-	-o-transition: all .3s ease;
-	transition: all .3s ease;
-}
-
-.btn_error:hover {
-	color: #9a3837;
-}
 
 
 /*Login*/
@@ -299,4 +267,81 @@ table {
 
 .lesson_matireal .btn_add:hover {
 	background-color: #fafafa;
+}
+
+/*Admin*/
+
+.add_form .form_group {
+	margin-bottom: 10px;
+}
+
+.add_form .form_group p {
+	margin-bottom: 10px;
+}
+
+.add_form .group_error {
+	color: #9a3837;
+}
+
+.add_form form input{
+	width: 80%;
+	height: 35px;
+	padding: 0 10px 0 20px;
+	background-color: #f4f4f4;
+	margin-bottom: 10px;
+	border: solid 1px #dcdcda;
+	border-radius: 3px;
+}
+
+.add_form form input[type=submit]{
+	padding: 0;
+	background-color: #8aa942;
+	color: #fff;
+	height: 40px;
+	cursor: pointer;
+}
+
+/*Buttons*/
+
+.btn {
+	display: inline-block;
+	padding: 10px 40px;
+	text-align: center;
+	font-size: 14px;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 3px;
+}
+
+.btn_succes {
+	background-color: #8aa942;
+	-webkit-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+.btn_succes:hover {
+	background-color: #8aa942;
+}
+
+.btn_primary {
+	background-color: #559ffb;
+	-webkit-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+.btn_primary:hover {
+	background-color: #72AEF9;
+}
+
+.btn_error {
+	background-color: #9a3837;
+	-webkit-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+.btn_error:hover {
+	background-color: #9a3837;
 }

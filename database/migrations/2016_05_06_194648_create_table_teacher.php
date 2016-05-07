@@ -18,6 +18,7 @@ class CreateTableTeacher extends Migration
             $table->integer('user_id')->unsigned();  // Пользователь
             $table->string('position')->length(250);  // Должность
             $table->string('degree')->length(250);  // Ученая степень
+            $table->timestamps();
         });
     }
 

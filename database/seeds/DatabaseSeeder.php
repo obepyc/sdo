@@ -12,28 +12,36 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
     	DB::table('users')->insert([
-    		'email' => "admin@mail.ru",
-    		'password' => bcrypt('123'),
-            'surname' => "Surname",
-            'name' => 'Name',
-            'second_name' => 'Secondname',
-    		'role' => '1',
-    		]);
+            'surname' => 'Admin',
+            'name' => 'Admin',
+            'second_name' => 'Admin',
+            'email' => "admin@mail.ru",
+            'password' => bcrypt('123'),
+            'type' => '1',
+            ]);
     	DB::table('users')->insert([
-    		'email' => "teacher@mail.ru",
-    		'password' => bcrypt('123'),
-            'surname' => "Surname",
-            'name' => 'Name',
-            'second_name' => 'Secondname',
-    		'role' => '2',
-    		]);
+            'surname' => 'Мироненко',
+            'name' => 'Дмитрий',
+            'second_name' => 'Сергеевич',
+            'email' => "teacher@mail.ru",
+            'password' => bcrypt('123'),
+            'type' => '2',
+            ]);
     	DB::table('users')->insert([
-    		'email' => "student@mail.ru",
-    		'password' => bcrypt('123'),
-            'surname' => "Surname",
-            'name' => 'Name',
-            'second_name' => 'Secondname',
-    		'role' => '3',
-    		]);
+            'surname' => 'Чернухин',
+            'name' => 'Сергей',
+            'second_name' => 'Александрович',
+            'email' => "chern@mail.ru",
+            'password' => bcrypt('123'),
+            'type' => '3',
+            ]);
+        DB::table('users')->insert([
+            'surname' => 'Филоненка',
+            'name' => 'Лилия',
+            'second_name' => 'Викторовна',
+            'email' => "filo@mail.ru",
+            'password' => bcrypt('123'),
+            'type' => '3',
+            ]);
     }
 }

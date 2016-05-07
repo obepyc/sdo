@@ -28,8 +28,8 @@
 						</ul>
 
 						<ul>
-							<li>Телефон: <span>+380*********</span></li>
-							<li>E-mai: <span>*******@****.**</span></li>
+							<li>Телефон: <span>{{Auth::user()->phone}}</span></li>
+							<li>E-mai: <span>{{Auth::user()->email}}</span></li>
 						</ul>
 					</div>
 				</div>

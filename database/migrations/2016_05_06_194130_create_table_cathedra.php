@@ -18,6 +18,7 @@ class CreateTableCathedra extends Migration
             $table->string('name')->length(150);  // Название "Компьютерные науки"
             $table->string('short_name')->length(50);  // Короткое название "КН"
             $table->integer('user_id')->unsigned();  // Зав.кафедры
+            $table->timestamps();
         });
     }
 

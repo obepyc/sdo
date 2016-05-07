@@ -6,6 +6,16 @@
 
 @section('content')
 
+<!-- Alert -->
+
+@if (Session::has('info'))
+
+<div class="alert">
+	<p>{{Session::get('info')}}</p>
+</div>
+
+@endif
+
 <!-- Login -->
 
 <div class="login">

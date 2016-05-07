@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use DB;
 use App\Http\Requests;
+use App\User;
 
 class AuthController extends Controller{
     
@@ -23,8 +25,9 @@ class AuthController extends Controller{
 			'password' => 'required'
 			]);
 
-		if (!Auth::attempt($request->only(['email', 'password']))) {
-			return redirect()->back();
+		if (!Auth::attempt($request->only('email', 'password'))) {
+
+			return redirect()->back()->with('info', 'Ошибка авторизации');
 		}
 
 		return redirect('/');

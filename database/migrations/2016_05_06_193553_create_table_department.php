@@ -17,6 +17,7 @@ class CreateTableDepartment extends Migration
             $table->string('name')->length(150);  // Название "Факультет информационных технологий"
             $table->string('short_name')->length(50);  // Короткое название "ФИТ"
             $table->integer('user_id')->unsigned();  // Декан
+            $table->timestamps();
         });
     }
 

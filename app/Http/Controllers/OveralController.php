@@ -12,22 +12,22 @@ class OveralController extends Controller{
 
 	public function index(){
 
-		$role = self::_cherRole();
+		$type = self::_cherRole();
 
-		if($role != 'error'){
-			return view($role.'.index');
+		if($type != 'error'){
+			return view($type.'.index');
 		}else{
-			return view($role);
+			return view($type);
 		}
 
 	}
 
 	private function _cherRole(){
-		if(Auth::user()->role == '1') {
+		if(Auth::user()->type == '1') {
 			return "admin";
-		}elseif(Auth::user()->role == '2'){
+		}elseif(Auth::user()->type == '2'){
 			return "teacher";
-		}elseif(Auth::user()->role == '3'){
+		}elseif(Auth::user()->type == '3'){
 			return "student";
 		}else{
 			return "error";

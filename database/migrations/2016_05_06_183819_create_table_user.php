@@ -18,7 +18,7 @@ class CreateTableUser extends Migration
             $table->string('name')->length(150);  // Имя
             $table->string('second_name')->length(150);  // Отчество
             $table->string('email')->unicue();  // Почта (логин)
-            $table->string('password')->length(32);  // Пароль (будет hash)
+            $table->string('password');  // Пароль (будет hash)
             $table->string('phone')->length(50); // Телефон
             $table->integer('type')->length(1)->unsignet();  // Тип (1-админ, 2-преподаватель, 3-студент)
             $table->rememberToken();

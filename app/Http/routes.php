@@ -36,16 +36,35 @@ Route::group(['middleware' => ['web', 'guest']], function(){
 
 Route::group(['middleware' => ['web', 'auth']], function () {
 
-	// Admin
+	// Администратор
 
 	Route::group(['middleware' => ['admin']], function(){
-		Route::get('/users/add', [
-			'uses' => 'AdminController@addUser',
-			'as' => 'users.add'
+
+		//Факультет
+
+		Route::get('/add/department', [
+			'uses' => 'AdminController@getDepartment',
+			'as' => 'add.department'
 			]);
+
+		Route::post('/add/department', [
+			'uses' => 'AdminController@addDepartment'
+			]);
+
+		// Кафедра
+
+		Route::get('/add/cathedra', [
+			'uses' => 'AdminController@getCathedra',
+			'as' => 'add.cathedra'
+			]);
+
+		Route::post('/add/cathedra', [
+			'uses' => 'AdminController@addCathedra'
+			]);
+
 	});
 
-	// All
+	// Все пользователи
 
 	Route::get('/', [
 		'uses' => 'OveralController@index',

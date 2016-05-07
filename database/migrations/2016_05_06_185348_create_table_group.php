@@ -17,6 +17,7 @@ class CreateTableGroup extends Migration
             $table->integer('cathedra_id')->unsigned();  // Кафедра
             $table->string('name')->length(150);  // Номер группы
             $table->string('yaer')->length(4);  // Год поступления
+            $table->timestamps();
         });
     }
 
