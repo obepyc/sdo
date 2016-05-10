@@ -15,8 +15,8 @@ class CreateTableGroup extends Migration
         Schema::create('groups', function (Blueprint $table) {
             $table->increments('id')->unsignet();
             $table->integer('cathedra_id')->unsigned();  // Кафедра
-            $table->string('name')->length(150);  // Номер группы
-            $table->string('yaer')->length(4);  // Год поступления
+            $table->string('name')->unique()->length(150);  // Номер группы
+            $table->string('year')->length(4);  // Год поступления
             $table->timestamps();
         });
     }

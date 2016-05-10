@@ -4,14 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cathedra extends Model{
-	
-	protected $table = "cathedra";
+class Teacher extends Model{
+
+	protected $table = "teachers";
 
 	protected $fillable = [
-	'name',
-	'short_name',
 	'user_id',
-	'department_id'
+	'cathedra_id',
+	'position',
+	'degree'
 	];
+
 }

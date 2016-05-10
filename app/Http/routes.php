@@ -62,14 +62,47 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 			'uses' => 'AdminController@addCathedra'
 			]);
 
+		// Группа
+
+		Route::get('/add/group', [
+			'uses' => 'AdminController@getGroup',
+			'as' => 'add.group'
+			]);
+
+		Route::post('/add/group', [
+			'uses' => 'AdminController@addGroup'
+			]);
+
+		// Преподаватель
+
+		Route::get('/add/teacher', [
+			'uses' => 'AdminController@getTeacher',
+			'as' => 'add.teacher'
+			]);
+
+		Route::post('/add/teacher', [
+			'uses' => 'AdminController@addTeacher'
+			]);
+
+		// Студент
+
+		Route::get('/add/student', [
+			'uses' => 'AdminController@getStudent',
+			'as' => 'add.student'
+			]);
+
+		Route::post('/add/student', [
+			'uses' => 'AdminController@addStudent'
+			]);
+
 	});
 
 	// Все пользователи
 
-	Route::get('/', [
-		'uses' => 'OveralController@index',
-		'as' => 'home'
-		]);
+Route::get('/', [
+	'uses' => 'OveralController@index',
+	'as' => 'home'
+	]);
 
 
 });

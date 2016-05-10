@@ -311,6 +311,7 @@ input, button, textarea {outline: none;}
 	color: #fff;
 	cursor: pointer;
 	border-radius: 3px;
+	margin: 10px;
 }
 
 .btn_succes {

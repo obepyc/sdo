@@ -9,19 +9,16 @@ use App\Http\Requests;
 use App\User;
 
 class AuthController extends Controller{
-    
+
+	// Авторизация
+
 	public function getLogin(){
 		return view('auth.login');
 	}
 
-	public function logout(){
-		Auth::logout();
-		return redirect()->route('login');
-	}
-
 	public function postLogin(Request $request){
 		$this->validate($request, [
-			'email' => 'required',
+			'email' => 'required|email',
 			'password' => 'required'
 			]);
 
@@ -33,4 +30,9 @@ class AuthController extends Controller{
 		return redirect('/');
 	}
 
+
+	public function logout(){
+		Auth::logout();
+		return redirect()->route('login');
+	}
 }

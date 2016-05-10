@@ -9,16 +9,16 @@ class User extends Authenticatable{
     protected $table = 'users';
 
     protected $fillable = [
-        'surname',
-        'name',
-        'second_name', 
-        'email', 
-        'password',
-        'type'
+    'surname',
+    'name',
+    'second_name', 
+    'email', 
+    'password',
+    'type'
     ];
 
     protected $hidden = [
-        'password',
-        'remember_token'
+    'password',
+    'remember_token'
     ];
 }

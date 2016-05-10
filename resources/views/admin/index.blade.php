@@ -16,6 +16,9 @@
 				<div class="col-md-6">
 					<a href="{{route('add.department')}}" class="btn btn_primary">Добавить факультет</a>
 					<a href="{{route('add.cathedra')}}" class="btn btn_primary">Добавить кафедру</a>
+					<a href="{{route('add.group')}}" class="btn btn_primary">Добавить группу</a>
+					<a href="{{route('add.teacher')}}" class="btn btn_primary">Добавить преподавателя</a>
+					<a href="{{route('add.student')}}" class="btn btn_primary">Добавить студента</a>
 				</div>
 				<div class="col-md-3"></div>
 				<div class="clr"></div>
