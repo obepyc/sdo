@@ -19,6 +19,22 @@ Route::group(['middleware' => ['web']], function () {
 		]);	
 
 
+	Route::get('/excel', function(){
+		Excel::load('uploads/wp.xlsx', function($reader) {
+			$results = $reader->get();
+			echo '<table>';
+			for($i = 0; $i < count($results); $i ++){
+				echo "<tr>";
+				echo "<td>".$results[$i]['nazvanie_predmeta'].'</td>';
+				echo "<td>".$results[$i]['kredity'].'</td>';
+				echo "<td>".$results[$i]['chasy'].'</td>';
+			}
+			echo '</table>';
+
+			dd($results);
+		});
+	});
+
 });
 
 Route::group(['middleware' => ['web', 'guest']], function(){

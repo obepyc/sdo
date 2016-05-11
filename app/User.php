@@ -14,6 +14,7 @@ class User extends Authenticatable{
     'second_name', 
     'email', 
     'password',
+    'phone',
     'type'
     ];
 
