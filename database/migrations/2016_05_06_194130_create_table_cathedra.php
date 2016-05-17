@@ -29,6 +29,6 @@ class CreateTableCathedra extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('cathedra');
     }
 }

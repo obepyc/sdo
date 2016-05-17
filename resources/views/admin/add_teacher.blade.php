@@ -88,4 +88,7 @@
 
 @section('scripts')
 <script src="/assets/js/chosen.jquery.min.js"></script>
+<script>
+	$(".chosen-select").chosen();
+</script>
 @stop

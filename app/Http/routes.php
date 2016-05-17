@@ -111,6 +111,55 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 			'uses' => 'AdminController@addStudent'
 			]);
 
+		// Рабочи план
+
+		Route::get('/add/workplan',[
+			'uses' => 'AdminController@getWorkplan',
+			'as' => 'add.workplan'
+			]);
+
+		Route::post('/add/workplan',[
+			'uses' => 'AdminController@addWorkplan'
+			]);
+
+		// Предметы
+
+		Route::get('/add/lesson', [
+			'uses' => 'AdminController@getLesson',
+			'as' => 'add.lesson'
+			]);
+
+		Route::post('/add/lesson', [
+			'uses' => 'AdminController@addLesson'
+			]);
+
+		Route::post('/add/lesson_group', [
+			'uses' => 'AdminController@addLesson_group',
+			'as' => 'add.lesson_group'
+			]);
+
+		Route::get('/add/workplan/lesson', [
+			'uses' => 'AdminController@getWP_lesson',
+			'as' => 'add.wp.lesson'
+			]);
+
+		Route::post('/add/workplan/lesson', [
+			'uses' => 'AdminController@addWP_lesson',
+			'as' => 'add.wp.lesson'
+			]);
+
+		Route::post('/add/workplan/lesson_group', [
+			'uses' => 'AdminController@addWP_lesson_group',
+			'as' => 'add.wp.lesson_group'
+			]);
+
+		// Список пользователей
+
+		Route::get('/users', [
+			'uses' => 'AdminController@allUsers',
+			'as' => 'all.users'
+			]);
+
 	});
 
 	// Все пользователи

@@ -24,7 +24,7 @@ class AuthController extends Controller{
 
 		if (!Auth::attempt($request->only('email', 'password'))) {
 
-			return redirect()->back()->with('info', 'Ошибка авторизации');
+			return redirect()->back()->with('error', 'Ошибка авторизации. Логин и/или пароль не совпадают!');
 		}
 
 		return redirect('/');

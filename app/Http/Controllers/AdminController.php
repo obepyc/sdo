@@ -12,6 +12,9 @@ use App\Group;
 use App\User;
 use App\Teacher;
 use App\Student;
+use App\Workplan;
+use App\Lesson;
+use App\WorkplanLesson;
 
 class AdminController extends Controller{
 
@@ -202,4 +205,182 @@ class AdminController extends Controller{
 
 	}
 
+	// Рабочий план
+
+	public function getWorkplan(){
+		
+		$users = DB::table('users')->where('type', '=' ,'2')->get();
+
+		$groups = DB::table('groups')->get();
+
+		$departments = DB::table('department')->get();
+
+		return view('admin.add_workplan', ['users' => $users, 'groups' => $groups, 'departments' => $departments]);
+	}
+
+	public function addWorkplan(Request $request){
+
+		$this->validate($request, [
+			'group' => 'required',
+			'way_code' => 'required|numeric',
+			'way_name' => 'required',
+			'level' => 'required',
+			'department' => 'required',
+			'training_form' => 'required',
+			'training_period' => 'required | numeric',
+			'qualification' => 'required',
+			'approved' => 'required'
+			]);
+
+		$add = Workplan::create([
+			'group_id' => $request->input('group'),
+			'way_code' => $request->input('way_code'),
+			'way_name' => $request->input('way_name'),
+			'level' => $request->input('level'),
+			'department_id' => $request->input('department'),
+			'training_form' => $request->input('training_form'),
+			'training_period' => $request->input('training_period'),
+			'qualification' => $request->input('qualification'),
+			'user_id' => $request->input('approved'),
+			]);
+
+		if($add->save())
+			return redirect()->back()->with('success', 'Добавление прошло успено');
+		else
+			return redirect()->back()->with('error', 'Произошла ошибка');
+	}
+
+	// Предметы
+
+	public function getLesson(){
+		
+		return view('admin.add_lesson');
+
+	}
+
+	public function addLesson(Request $request){
+
+		$this->validate($request, ['name' => 'required']);
+
+
+
+		dd($request->input());
+
+	}
+
+	public function addLesson_group(Request $request){
+
+		if(empty($request->file('wp')))
+			return redirect()->back()->with('warning', 'Вы забыли выбрать файл');
+
+		if($request->file('wp')->extension() == 'xls' || $request->file('wp')->extension() == 'xlsx'){
+
+
+			\Excel::load($file->path(), function($reader) {
+				$results = $reader->get();
+				for($i = 0; $i < count($results); $i ++){
+					Lesson::create(['name' => $results[$i]['nazvanie_predmeta']]);
+				}
+			});
+			return redirect()->back()->with('success', 'Добавление прошло успешно');
+		}else{
+			return redirect()->back()->with('error', 'Только xls или xlsx расширения');
+		}
+
+	}
+
+	// Предметы рабочего плана
+
+	public function getWP_Lesson(){
+
+		$lessons = DB::table('lessons')->get();
+
+		$groups = DB::table('groups')
+		->select('id', 'name')
+		->whereExists(function ($query) {
+			$query->select(DB::raw(1))
+			->from('work_plans')
+			->whereRaw('work_plans.group_id = groups.id');
+		})
+		->get();
+
+		return view('admin.add_WP_lessons', ['lessons' => $lessons, 'groups' => $groups]);
+	}
+
+	public function addWP_lesson(Request $request){
+
+		$this->validate($request, [
+			'group' => 'required',
+			'name' => 'required',
+			'credits' => 'required|numeric',
+			'hour' => 'required|numeric',
+			'semestr' => 'required'
+			]); 
+
+		$semestr = '';
+		for($i = 0; $i < count($request->input('semestr')); $i++){
+			$semestr .= $request->input('semestr')[$i].";";
+		}
+
+		$wp = DB::table('work_plans')->select('id')->where('group_id', '=', $request->input('group'))->get();
+
+		$add = WorkplanLesson::create([
+			'wp_id' => $wp[0]->id,
+			'name' => $request->input('name'),
+			'credits' => $request->input('credits'),
+			'hour' => $request->input('hour'),
+			'semester' => $semestr =  substr($semestr,0,-1)
+			]);
+		if($add->save()){
+			return redirect()->back()->with('success', 'Добавление прошло успешно');
+		}else{
+			return redirect()->back()->with('error', 'Что-то пошло не так');
+		}
+
+
+	}
+
+	public function addWP_lesson_group(Request $request){
+
+		$this->validate($request, ['group' => 'required']);
+
+		if(empty($request->file('wp')))
+			return redirect()->back()->with('warning', 'Вы забыли выбрать файл');
+
+		if($request->file('wp')->extension() == 'xls' || $request->file('wp')->extension() == 'xlsx'){
+			
+			\Excel::load($request->file('wp')->path(), function($reader) {
+				$wp = DB::table('work_plans')->select('id')->where('group_id', '=', Request()->input('group'))->get();
+				$results = $reader->get();			
+				$error = false;	
+				for($i = 0; $i < count($results); $i ++){
+					$name = DB::table("lessons")->select('id')->where('name', '=', $results[$i]['nazvanie_predmeta'])->get();
+					if(count($name) != 0){
+						WorkplanLesson::create([
+							'wp_id' => $wp[0]->id,
+							'name' => $name[0]->id,
+							'credits' => $results[$i]['kredity'],
+							'hour' => $results[$i]['chasy'],
+							'semester' => $results[$i]['semestr']
+							]);
+					}
+				}
+			});
+
+			return redirect()->back()->with('success', 'Добавление прошло успешно')->with('warning', 'Могли быть добавлены не все предметы. Добавьте их вручную.');;
+
+		}else{
+			return redirect()->back()->with('error', 'Только xls или xlsx расширения');
+		}
+
+	}
+
+	// Все пользователи
+
+	public function allUsers(){
+
+		$users = DB::table('users')->get();
+
+		return view('admin.all_users', ['users' => $users]);
+	}
 }

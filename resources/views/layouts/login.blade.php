@@ -9,6 +9,13 @@
 <body>
 	
 	@yield('content')
+	
+	<!-- Scripts -->
+	<script src="/assets/js/jquery.js"></script>
+
+	@yield('scripts')
+
+	<script src="/assets/js/main.js"></script>
 
 </body>
 </html>

@@ -28,6 +28,6 @@ class CreateTableDepartment extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('department');
     }
 }

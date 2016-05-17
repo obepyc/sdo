@@ -28,6 +28,51 @@ input, button, textarea {outline: none;}
 
 .clr {clear: both;}
 
+.alerts{
+	position: absolute;
+	top: 70px;	
+	right: 10px;
+	width: 300px;
+}
+
+.alert {
+	width: 300px;
+	border-radius: 3px;
+	padding: 10px;
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+	box-shadow: 0 0 10px rgba(0,0,0,.3);
+	margin-bottom: 15px;
+}
+
+.alert h4 {
+	margin-bottom: 10px;
+}
+
+.alert .close {
+	float: right;
+	cursor: pointer;
+}
+
+.alert.alert-error {
+	background-color: #ff7389;
+	color: #fff;
+}
+
+.alert.alert-warning {
+	background-color: #ECE089;
+	color: #fff;
+}
+
+.alert.alert-info {
+	background-color: #92d0de;
+	color: #fff;
+}
+
+.alert.alert-success {
+	background-color: #a5d592;
+	color: #fff;
+}
+
 
 /*Login*/
 
@@ -41,15 +86,18 @@ input, button, textarea {outline: none;}
 	margin-left: -150px;
 	text-align: center;
 	overflow: hidden;
+	background-color: #fefeff;
+	border: solid 1px #d8dee6;
+	border-radius: 3px;
+	padding: 15px;
 }
 
 .login h3 {margin-bottom: 15px;}
 
 .login form input {
-	width: 280px;
+	width: 90%;
 	height: 35px;
-	padding: 0 10px 0 20px;
-	background-color: #f4f4f4;
+	padding: 0 10px 0 40px;
 	margin-bottom: 10px;
 	border: solid 1px #dcdcda;
 	border-radius: 3px;
@@ -57,10 +105,30 @@ input, button, textarea {outline: none;}
 
 .login form input[type=submit]{
 	padding: 0;
-	background-color: #8aa942;
+	background-color: #61c258;
 	color: #fff;
 	height: 40px;
 	cursor: pointer;
+	border: none;
+	-webkit-transition: background-color .3s ease;
+	-o-transition: background-color .3s ease;
+	transition: background-color .3s ease;
+}
+
+.login form input[type=submit]:hover{
+	background-color: #84c97e;
+}
+
+.login .form_group {
+	position: relative;
+}
+
+.login .form_group i{
+	position: absolute;
+	top: 10px;
+	left: 25px;
+	font-size: 16px;
+	color: #36393e;
 }
 
 .group_error input{
@@ -71,7 +139,7 @@ input, button, textarea {outline: none;}
 
 .top_menu {
 	height: 65px;
-	background-color: #9a3837;
+	background-color: #385762;
 }
 
 .top_menu ul li {float: left;}
@@ -84,10 +152,13 @@ input, button, textarea {outline: none;}
 	text-align: center;
 	color: #fff;
 	font-size: 14px;
+	-webkit-transition: background-color .2s ease;
+	-o-transition: background-color .2s ease;
+	transition: background-color .2s ease;
 }
 
-.top_menu ul li a:hover, .top_menu ul li .active, .top_menu .exit:hover{
-	background-color: #761e1d;
+.top_menu ul li a:hover, .top_menu ul li .active{
+	background-color: #559ffb;
 }
 
 .top_menu .exit {
@@ -97,16 +168,22 @@ input, button, textarea {outline: none;}
 	padding: 0 30px;
 	color: #fff;
 	float: right;
+	-webkit-transition: background-color .2s ease;
+	-o-transition: background-color .2s ease;
+	transition: background-color .2s ease;
 }
 
+.top_menu .exit:hover {
+	background-color: #ff7389;
+}
 
 
 /*User profile*/
 
 .user_profile {
 	margin-top: 15px;
-	background-color: #f4f4f4;
-	border: solid 1px #dcdcda;
+	background-color: #fefeff;
+	border: solid 1px #d8dee6;
 	padding: 15px;
 	color: #36393e;
 	font-weight: 600;
@@ -141,16 +218,16 @@ input, button, textarea {outline: none;}
 }
 
 .lessons h3 {
-	background-color: #f4f4f4;
-	border: solid 1px #dcdcda;
+	background-color: #fefeff;
+	border: solid 1px #d8dee6;
 	padding: 10px 15px;
 	margin-bottom: 15px;	
 	border-radius: 3px;
 }
 
 .lesson {
-	background-color: #f4f4f4;
-	border: solid 1px #dcdcda;
+	background-color: #fefeff;
+	border: solid 1px #d8dee6;
 	padding: 15px;
 	text-align: center;
 	margin-bottom: 15px;
@@ -295,10 +372,18 @@ input, button, textarea {outline: none;}
 
 .add_form form input[type=submit]{
 	padding: 0;
-	background-color: #8aa942;
+	background-color: #61c258;
+	border: none;
 	color: #fff;
 	height: 40px;
 	cursor: pointer;
+	-webkit-transition: background-color .3s ease;
+	-o-transition: background-color .3s ease;
+	transition: background-color .3s ease;
+}
+
+.add_form form input[type=submit]:hover{
+	background-color: #84c97e;
 }
 
 /*Buttons*/
@@ -314,15 +399,19 @@ input, button, textarea {outline: none;}
 	margin: 10px;
 }
 
-.btn_succes {
-	background-color: #8aa942;
+.btn i {
+	margin-right: 15px;
+}
+
+.btn_success {
+	background-color: #61c258;
 	-webkit-transition: all .3s ease;
 	-o-transition: all .3s ease;
 	transition: all .3s ease;
 }
 
-.btn_succes:hover {
-	background-color: #8aa942;
+.btn_success:hover {
+	background-color: #84c97e;
 }
 
 .btn_primary {
@@ -346,3 +435,58 @@ input, button, textarea {outline: none;}
 .btn_error:hover {
 	background-color: #9a3837;
 }
+
+/*Users table*/
+
+.all_users {
+	margin-top: 25px;
+}
+
+.all_users h3 {
+	margin-bottom: 25px;
+}
+
+.users_table {
+	width: 100%;
+	text-align: center;
+	margin-top: 15px;
+	border-radius: 3px;
+	background-color: #fff;
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,.3);
+	box-shadow: 0 0 5px rgba(0,0,0,.3);
+}
+
+.users_table tr {
+	line-height: 32px;
+}
+
+.users_table tr:hover {
+	background-color: #f3f5f7;
+}
+
+.users_table tr:first-child {
+	line-height: 40px;
+	background-color: #385762;
+	color: #fff;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+}
+
+/* Tabs */
+#tabs {}
+#tabs .tabs {overflow: hidden;}
+#tabs .tabs li {float: left;}
+#tabs .tabs li a {
+	display: block; 
+	padding: 8px 16px; 
+	font-size: 14px; 
+	line-height: 21px; 
+	color: #999;
+	-webkit-transition: all .1s ease;
+	-o-transition: all .1s ease;
+	transition: all .1s ease;
+}
+#tabs .tabs li a.active,
+#tabs .tabs li a:hover {color: #369; border-bottom: 2px solid #6daff8}
+
+#tabs .tabs-content {padding: 20px; font-size: 16px; line-height: 21px; min-height: 200px;}

@@ -29,6 +29,6 @@ class CreateTableTeacher extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('teachers');
     }
 }

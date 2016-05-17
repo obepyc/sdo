@@ -6,6 +6,15 @@
 
 @section('content')
 
+@if (Session::has('success'))
+<div class="alerts">
+	<div class="alert alert-success">
+		<h4>Успешно<span class="close"><i class="fa fa-close"></i></span></h4>
+		<p>{{Session::get('success')}}</p>
+	</div>
+</div>
+@endif
+
 <!-- User profile -->
 
 <div class="container">
@@ -53,4 +62,8 @@
 
 @section('scripts')
 <script src="/assets/js/chosen.jquery.min.js"></script>
+
+<script>
+	$(".chosen-select").chosen();
+</script>
 @stop

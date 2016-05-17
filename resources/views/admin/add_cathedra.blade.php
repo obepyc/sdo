@@ -26,7 +26,7 @@
 						</div>
 						<div class="form_group{{$errors->has('department') ? ' group_error' : ''}}">
 							<p>Факультет</p>
-							<select name="department" id="" class="chosen-select" data-placeholder="Выберите факультет" style="width:350px; height:40px;">
+							<select name="department" id="" class="chosen-select" data-placeholder="Выберите факультет">
 								<option value=""></option>
 								@if(count($departments) > 0)
 								@foreach($departments as $department)
@@ -64,4 +64,8 @@
 
 @section('scripts')
 <script src="/assets/js/chosen.jquery.min.js"></script>
+
+<script>
+	$(".chosen-select").chosen();
+</script>
 @stop
