@@ -13,14 +13,14 @@ class CreateTableUser extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id')->unsignet();
+            $table->increments('id')->unsigned();
             $table->string('surname')->length(150);  // Фамилия
             $table->string('name')->length(150);  // Имя
             $table->string('second_name')->length(150);  // Отчество
             $table->string('email')->unique();  // Почта (логин)
             $table->string('password');  // Пароль (будет hash)
             $table->string('phone')->length(50); // Телефон
-            $table->integer('type')->length(1)->unsignet();  // Тип (1-админ, 2-преподаватель, 3-студент)
+            $table->integer('type')->length(1)->unsigned();  // Тип (1-админ, 2-преподаватель, 3-студент)
             $table->rememberToken();
             $table->timestamps();
         });

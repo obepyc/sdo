@@ -104,7 +104,7 @@ class AdminController extends Controller{
 			'year' => $request->input('year')
 			]);
 
-		return redirect()->back()->with('info', 'Добавление прошло успено');
+		return redirect()->back()->with('success', 'Добавление прошло успено');
 
 	}
 
@@ -262,9 +262,15 @@ class AdminController extends Controller{
 
 		$this->validate($request, ['name' => 'required']);
 
+		$add = Lesson::create([
+			'name' => $request->input('name')
+			]);
 
-
-		dd($request->input());
+		if($add->save()){
+			return redirect()->back()->with('success', 'Добавление прошло успешно');
+		}else{
+			return redirect()->back()->with('error', 'Произошла ошика при добавлении');
+		}
 
 	}
 

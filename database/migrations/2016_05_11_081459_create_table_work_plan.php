@@ -13,7 +13,7 @@ class CreateTableWorkPlan extends Migration
     public function up()
     {
         Schema::create('work_plans', function (Blueprint $table) {
-            $table->increments('id')->unsignet();
+            $table->increments('id')->unsigned();
             $table->integer('group_id')->unsigned(); // Группа
             $table->string('way_code')->length(50); // Направление подготовки (код)
             $table->string('way_name')->length(250); // Направление подготовки (название)

@@ -14,15 +14,15 @@
 			<h3>Профиль польователя</h3>
 			<div class="profile_container">
 				<div class="col-md-2">
-					<div class="user_img">
+{{-- 					<div class="user_img">
 						<img src="" alt="" width="150" height="150">
-					</div>
+					</div> --}}
 				</div>
 				<div class="col-md-6">
 					<div class="user_info">
 						<p class="user_fio">{{Auth::user()->surname." ".Auth::user()->name." ".Auth::user()->second_name}}</p>
 						<ul>
-							<li>Группа: <a href="">XX-YY</a></li>
+							<li>Группа: <a href="">{{$group[0]->name}}</a></li>
 							<li>Староста: <a href="">Фамилия Имя Отчество</a></li>
 							<li>Куратор: <a href="">Фамилия Имя Отчество</a></li>
 						</ul>
@@ -46,88 +46,22 @@
 	<div class="row">
 		<div class="lessons">
 			<h3>Список предметов</h3>
-			<div id="lessons">
+			<div id="lessons">					
+				@if(count($lessons)>0)
+				@foreach($lessons as $lesson)
 				<div class="col-md-3">
 					<div class="lesson">
-						<p class="lesson_title">Название предмета</p>
+						<p class="lesson_title">{{$lesson['name']}}</p>
 						<div class="lesson_info">
 							<p>Лабораторные:<span>4</span></p>
 							<p>Лекции:<span>4</span></p>
 						</div>
-						<a href="#" class="lesson_btn">Перейти</a>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="lesson">
-						<p class="lesson_title">Название предмета</p>
-						<div class="lesson_info">
-							<p>Лабораторные:<span>4</span></p>
-							<p>Лекции:<span>4</span></p>
-						</div>
-						<a href="#" class="lesson_btn">Перейти</a>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="lesson">
-						<p class="lesson_title">Название предмета</p>
-						<div class="lesson_info">
-							<p>Лабораторные:<span>4</span></p>
-							<p>Лекции:<span>4</span></p>
-						</div>
-						<a href="#" class="lesson_btn">Перейти</a>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="lesson">
-						<p class="lesson_title">Название предмета</p>
-						<div class="lesson_info">
-							<p>Лабораторные:<span>4</span></p>
-							<p>Лекции:<span>4</span></p>
-						</div>
-						<a href="#" class="lesson_btn">Перейти</a>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="lesson">
-						<p class="lesson_title">Название предмета</p>
-						<div class="lesson_info">
-							<p>Лабораторные:<span>4</span></p>
-							<p>Лекции:<span>4</span></p>
-						</div>
-						<a href="#" class="lesson_btn">Перейти</a>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="lesson">
-						<p class="lesson_title">Название предмета</p>
-						<div class="lesson_info">
-							<p>Лабораторные:<span>4</span></p>
-							<p>Лекции:<span>4</span></p>
-						</div>
-						<a href="#" class="lesson_btn">Перейти</a>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="lesson">
-						<p class="lesson_title">Название предмета</p>
-						<div class="lesson_info">
-							<p>Лабораторные:<span>4</span></p>
-							<p>Лекции:<span>4</span></p>
-						</div>
-						<a href="#" class="lesson_btn">Перейти</a>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="lesson">
-						<p class="lesson_title">Название предмета</p>
-						<div class="lesson_info">
-							<p>Лабораторные:<span>4</span></p>
-							<p>Лекции:<span>4</span></p>
-						</div>
-						<a href="#" class="lesson_btn">Перейти</a>
+						<a href="#" class="btn btn_success">Перейти</a>
 					</div>
 				</div>
 			</div>
+			@endforeach
+			@endif
 		</div>
 	</div>
 </div>

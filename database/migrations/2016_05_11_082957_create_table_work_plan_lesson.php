@@ -13,12 +13,12 @@ class CreateTableWorkPlanLesson extends Migration
     public function up()
     {
         Schema::create('work_plan_lessons', function (Blueprint $table) {
-            $table->increments('id')->unsignet();
+            $table->increments('id')->unsigned();
             $table->integer('wp_id')->unsigned(); // Рабочий план
-            $table->string('name')->length(250); // Название предмета
+            $table->integer('name')->unsigned(); // Название предмета
             $table->float('credits'); // Кредиты
             $table->integer('hour')->unsigned(); // Часы
-            $table->string('semester')->length(250); // Семестр
+            $table->string('semester')->length(150); // Семестр
             $table->timestamps();
         });
     }

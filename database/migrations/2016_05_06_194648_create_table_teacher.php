@@ -13,7 +13,7 @@ class CreateTableTeacher extends Migration
     public function up()
     {
         Schema::create('teachers', function (Blueprint $table) {
-            $table->increments('id')->unsignet();
+            $table->increments('id')->unsigned();
             $table->integer('cathedra_id')->unsigned();  // Кафедра. к которой относится
             $table->integer('user_id')->unsigned();  // Пользователь
             $table->string('position')->length(250);  // Должность

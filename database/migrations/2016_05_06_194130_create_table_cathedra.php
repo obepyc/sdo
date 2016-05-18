@@ -13,7 +13,7 @@ class CreateTableCathedra extends Migration
     public function up()
     {
         Schema::create('cathedra', function (Blueprint $table) {
-            $table->increments('id')->unsignet();
+            $table->increments('id')->unsigned();
             $table->integer('department_id')->unsigned();  // Факультет
             $table->string('name')->unique()->length(150);  // Название "Компьютерные науки"
             $table->string('short_name')->unique()->length(50);  // Короткое название "КН"

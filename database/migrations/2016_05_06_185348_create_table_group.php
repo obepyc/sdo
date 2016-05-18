@@ -13,7 +13,7 @@ class CreateTableGroup extends Migration
     public function up()
     {
         Schema::create('groups', function (Blueprint $table) {
-            $table->increments('id')->unsignet();
+            $table->increments('id')->unsigned();
             $table->integer('cathedra_id')->unsigned();  // Кафедра
             $table->string('name')->unique()->length(150);  // Номер группы
             $table->string('year')->length(4);  // Год поступления

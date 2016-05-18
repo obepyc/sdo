@@ -13,7 +13,7 @@ class CreateTableDepartment extends Migration
     public function up()
     {
         Schema::create('department', function (Blueprint $table) {
-            $table->increments('id')->unsignet();
+            $table->increments('id')->unsigned();
             $table->string('name')->unique()->length(150);  // Название "Факультет информационных технологий"
             $table->string('short_name')->unique()->length(50);  // Короткое название "ФИТ"
             $table->integer('user_id')->unsigned();  // Декан

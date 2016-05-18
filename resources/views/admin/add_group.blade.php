@@ -6,6 +6,29 @@
 
 @section('content')
 
+<!-- Allerts -->
+
+<div class="alerts">
+	@if(Session::has('error'))
+	<div class="alert alert-error">
+		<h4>Ошибка <span class="close"><i class="fa fa-close"></i></span></h4>
+		<p>{{Session::get('error')}}</p>
+	</div>
+	@endif
+	@if(Session::has('success'))
+	<div class="alert alert-success">
+		<h4>Успех <span class="close"><i class="fa fa-close"></i></span></h4>
+		<p>{{Session::get('success')}}</p>
+	</div>
+	@endif
+	@if(Session::has('warning'))
+	<div class="alert alert-warning">
+		<h4>Внимание <span class="close"><i class="fa fa-close"></i></span></h4>
+		<p>{{Session::get('warning')}}</p>
+	</div>
+	@endif
+</div>
+
 <!-- User profile -->
 
 <div class="container">

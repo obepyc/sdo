@@ -18,6 +18,51 @@ Route::group(['middleware' => ['web']], function () {
 		'as' => 'logout'
 		]);	
 
+	Route::get('/test', function(){
+		
+		$old_date = DB::table('groups')
+					->select('year')
+					->where('id', '=', '1')
+					->get();
+		$start = $old_date[0]->year.'-09-01';
+		$start_time = new Datetime($start);
+		$date = new Datetime();
+		$dif = $date->diff($start_time);
+
+		$semestr = 0;
+
+		if(($dif->format('%y') == '3') && ($dif->format('%m') > '5')){
+			$semestr = 8;
+		}elseif(($dif->format('%y') == '3') && ($dif->format('%m') < '5')){
+			$semestr = 7;
+		}elseif(($dif->format('%y') == '2') && ($dif->format('%m') > '5')){
+			$semestr = 6;
+		}elseif(($dif->format('%y') == '2') && ($dif->format('%m') < '5')){
+			$semestr = 5;
+		}elseif(($dif->format('%y') == '1') && ($dif->format('%m') > '5')){
+			$semestr = 4;
+		}elseif(($dif->format('%y') == '1') && ($dif->format('%m') < '5')){
+			$semestr = 3;
+		}elseif(($dif->format('%y') == '0') && ($dif->format('%m') > '5')){
+			$semestr = 2;
+		}elseif(($dif->format('%y') == '0') && ($dif->format('%m') < '5') && ($dif->format('%m') != '0')){
+			$semestr = 1;
+		}
+
+		if($date < $start_time){
+			$semestr = 0;
+		}
+
+		$lessons = DB::table('work_plan_lessons')
+			->select('name')
+			->where('wp_id', '=', '1')
+			->where('semester', 'LIKE', '%'.$semestr.'%')
+			->get();
+
+		dd($lessons);
+
+	});
+
 
 	Route::get('/excel', function(){
 		Excel::load('uploads/wp.xlsx', function($reader) {

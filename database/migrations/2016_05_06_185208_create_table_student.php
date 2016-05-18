@@ -13,7 +13,7 @@ class CreateTableStudent extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->increments('id')->unsignet();
+            $table->increments('id')->unsigned();
             $table->integer('user_id')->unsigned();  // Пользователь
             $table->integer('group_id')->unsigned();  // Группа
             $table->timestamps();
