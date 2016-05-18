@@ -53,8 +53,8 @@
 					<div class="lesson">
 						<p class="lesson_title">{{$lesson['name']}}</p>
 						<div class="lesson_info">
-							<p>Лабораторные:<span>4</span></p>
-							<p>Лекции:<span>4</span></p>
+							<p>Лабораторные:<span>{{$lesson['labs']}}</span></p>
+							<p>Лекции:<span>{{$lesson['lections']}}</span></p>
 						</div>
 						<a href="{{route ('single.lesson', $lesson['id'])}}" class="btn btn_success">Перейти</a>
 					</div>

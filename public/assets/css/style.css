@@ -508,6 +508,27 @@ td .btn_success:hover {
 	border-top-left-radius: 3px;
 }
 
+/*message*/
+
+.mess h4 {padding-bottom: 10px;}
+
+.messages {max-height: 300px; overflow-y: scroll;}
+
+.message {
+	margin: 10px 0;
+	border-bottom: solid 2px #559ffb;
+}
+
+.message .title {
+	font-weight: 600;
+	padding-bottom: 15px;
+}
+
+.message .text {
+	font-size: 12px;
+	padding-bottom: 15px;
+}
+
 /* Tabs */
 #tabs {}
 #tabs .tabs {overflow: hidden;}

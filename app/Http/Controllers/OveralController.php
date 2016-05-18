@@ -29,6 +29,18 @@ class OveralController extends Controller{
 				$les = DB::table('lessons')->select('id', 'name')->where('id', '=',$les[0]->id)->get();
 				$lesson[$i]['id'] = $les[0]->id;
 				$lesson[$i]['name'] = $les[0]->name;
+				$les = DB::table('lesson_matireals')
+				->select(DB::raw('count(*) as user_count'))
+				->where('work_lesson_id', '=', $lessons[$i]->id)
+				->where('type', '=', '1')
+				->get();
+				$lesson[$i]['labs'] = $les[0]->user_count;
+				$les = DB::table('lesson_matireals')
+				->select(DB::raw('count(*) as user_count'))
+				->where('work_lesson_id', '=', $lessons[$i]->id)
+				->where('type', '=', '2')
+				->get();
+				$lesson[$i]['lections'] = $les[0]->user_count;
 
 			}
 
@@ -102,6 +114,18 @@ class OveralController extends Controller{
 				$les = DB::table('lessons')->select('id', 'name')->where('id', '=', $lessons_id[$i]->id)->get();
 				$lesson[$i]['id'] = $les[0]->id;
 				$lesson[$i]['name'] = $les[0]->name;
+				$les = DB::table('lesson_matireals')
+				->select(DB::raw('count(*) as user_count'))
+				->where('work_lesson_id', '=', $lessons_id[$i]->id)
+				->where('type', '=', '1')
+				->get();
+				$lesson[$i]['labs'] = $les[0]->user_count;
+				$les = DB::table('lesson_matireals')
+				->select(DB::raw('count(*) as user_count'))
+				->where('work_lesson_id', '=', $lessons_id[$i]->id)
+				->where('type', '=', '2')
+				->get();
+				$lesson[$i]['lections'] = $les[0]->user_count;
 			}
 
 			return view("student.index", ['group' => $group, 'lessons' => $lesson]);

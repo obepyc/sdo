@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-Редактирование предмета - {{$lesson_name}}
+Сообщение к предмету - {{$lesson_name}}
 @stop
 
 @section('content')
@@ -34,15 +34,20 @@
 <div class="container">
 	<div class="row">
 		<div class="user_profile add_form">
-		<h3>Редактирование предмета - {{$lesson_name}}</h3>
+			<h3>Добавить сообщение к предмету - {{$lesson_name}}</h3>
 			<div class="profile_container">
 				<div class="col-md-2"></div>
 				<div class="col-md-6">
-					<form action="{{route ('edit.lesson', $lesson_id)}}" method="post" class="add_new">
+					<form action="{{route ('lesson.message', $lesson_id)}}" method="post" class="add_new">
 
-						<div class="form_group {{$errors->has('desc') ? ' group_error' : ''}}">
-							<p>Описание предмета</p>
-							<textarea name="desc" id="editor1" cols="30" rows="10">{{$desc}}{{old('short_name') ? : ''}}</textarea>
+						<div class="form_group {{$errors->has('title') ? ' group_error' : ''}}">
+							<p>Заголовок</p>
+							<input type="text" name="title" placeholder="Введите заголовок сообщения">
+						</div>
+
+						<div class="form_group {{$errors->has('mess') ? ' group_error' : ''}}">
+							<p>Текст сообщения</p>
+							<textarea name="mess" id="editor1" cols="30" rows="10">{{old('mess') ? : ''}}</textarea>
 						</div>
 
 						<div class="form_group">

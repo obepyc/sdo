@@ -15,7 +15,8 @@ class CreateTableLessonMatireals extends Migration
         Schema::create('lesson_matireals', function(Blueprint $table){
             $table->increments('id')->unsigned();
             $table->integer('work_lesson_id')->unsigned(); // Название предмета
-            $table->string('type')->legth(150); // Тип материала (Лекция, лаборатораная, дополнительный)
+            $table->integer('user_id')->unsigned(); // Кто добавил
+            $table->integer('type'); // Тип материала (Лекция, лаборатораная, дополнительный)
             $table->string('name')->legth(150); // Название материала          
             $table->string('url')->legth(150); // Ссылка на материал         
             $table->timestamps();

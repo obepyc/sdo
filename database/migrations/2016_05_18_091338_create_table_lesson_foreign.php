@@ -26,6 +26,7 @@ class CreateTableLessonForeign extends Migration
         });
         Schema::table('lesson_matireals', function(Blueprint $table){
             $table->foreign('work_lesson_id')->references('id')->on('work_lesson');
+            $table->foreign('user_id')->references('id')->on('users');
         });
         Schema::table('lesson_messages', function(Blueprint $table){
             $table->foreign('work_lesson_id')->references('id')->on('work_lesson');

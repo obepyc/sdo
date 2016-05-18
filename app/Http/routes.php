@@ -209,25 +209,47 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
 	// Преподаватель
 
-	Route::group(['middleware' => ['teacher']], function(){
+Route::group(['middleware' => ['teacher']], function(){
 
-		Route::get('/lesson/{id}/edit', [
-			'uses' => 'TeacherController@edit_lesson',
-			'as' => 'edit.lesson'
-			]);
+	Route::get('/lesson/{id}/edit', [
+		'uses' => 'TeacherController@edit_lesson',
+		'as' => 'edit.lesson'
+		]);
 
-	});
+	Route::post('/lesson/{id}/edit', [
+		'uses' => 'TeacherController@post_edit_lesson',
+		]);
+
+	Route::get('/lesson/{id}/message',[
+		'uses' => 'TeacherController@getMessage',
+		'as' => 'lesson.message'
+		]);
+
+	Route::post('/lesson/{id}/message',[
+		'uses' => 'TeacherController@addMessage'
+		]);
+
+	Route::get('/lesson/{id}/material', [
+		'uses' => 'TeacherController@getMaterial',
+		'as' => 'lesson.material'
+		]);
+
+	Route::post('/lesson/{id}/material', [
+		'uses' => 'TeacherController@addMaterial'
+		]);
+
+});
 
 	// Все пользователи
 
-	Route::get('/', [
-		'uses' => 'OveralController@index',
-		'as' => 'home'
-		]);
+Route::get('/', [
+	'uses' => 'OveralController@index',
+	'as' => 'home'
+	]);
 
-	Route::get('/lesson/{id}', [
-		'uses' => 'Worklesson@lesson',
-		'as' => 'single.lesson'
-		]);
+Route::get('/lesson/{id}', [
+	'uses' => 'Worklesson@lesson',
+	'as' => 'single.lesson'
+	]);
 
 });

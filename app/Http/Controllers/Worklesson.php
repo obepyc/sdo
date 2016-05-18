@@ -19,7 +19,7 @@ class Worklesson extends Controller{
 
 		if(!empty($new[0]->desc)) $desc = $new[0]->desc;
 
-		$messages = DB::table('lesson_messages')->where('work_lesson_id', '=', $id)->get();
+		$messages = DB::table('lesson_messages')->select('user_id', 'title', 'text', 'created_at as date')->where('work_lesson_id', '=', $id)->orderBy('created_at', 'desc')->get();
 
 		$new = DB::table('lesson_teachers')->select('user_id')->where('work_lesson_id', '=', $id)->get();
 
@@ -33,12 +33,18 @@ class Worklesson extends Controller{
 			$teachers[$i]['second_name'] =  $tech[0]->second_name;
 		}
 
+		$labs = DB::table('lesson_matireals')->select('name', 'created_at as date', 'url')->where('type', '=', '1')->where('work_lesson_id', '=', $id)->get();
+
+		$lections = DB::table('lesson_matireals')->select('name', 'created_at as date', 'url')->where('type', '=', '2')->where('work_lesson_id', '=', $id)->get();
+
 		return view('lesson.index', [
 			'lesson_id' => $id,
 			'lesson_name' => $name[0]->name,
 			'lesson_desc' => $desc,
 			'messages' => $messages,
-			'teachers' => $teachers
+			'teachers' => $teachers,
+			'labs' => $labs,
+			'lections' => $lections
 			]);
 	}
 
