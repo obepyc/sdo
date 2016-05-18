@@ -27,6 +27,12 @@
 		<p>{{Session::get('warning')}}</p>
 	</div>
 	@endif
+	@if(Session::has('info'))
+	<div class="alert alert-info">
+		<h4>Внимание <span class="close"><i class="fa fa-close"></i></span></h4>
+		<p>{{Session::get('info')}}</p>
+	</div>
+	@endif
 </div>
 
 <!-- User profile -->

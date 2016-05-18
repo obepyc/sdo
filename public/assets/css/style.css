@@ -436,6 +436,42 @@ input, button, textarea {outline: none;}
 	background-color: #9a3837;
 }
 
+td .btn_primary i {
+	color: #559ffb;
+}
+
+td .btn_primary {
+	background: none;
+}
+
+td .btn_primary:hover {
+	background: none;
+}
+
+td .btn_error i {
+	color: #9a3837;
+}
+
+td .btn_error {
+	background: none;
+}
+
+td .btn_error:hover {
+	background: none;
+}
+
+td .btn_success i {
+	color: #61c258;
+}
+
+td .btn_success {
+	background: none;
+}
+
+td .btn_success:hover {
+	background: none;
+}
+
 /*Users table*/
 
 .all_users {

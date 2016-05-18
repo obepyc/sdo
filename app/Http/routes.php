@@ -21,9 +21,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/test', function(){
 		
 		$old_date = DB::table('groups')
-					->select('year')
-					->where('id', '=', '1')
-					->get();
+		->select('year')
+		->where('id', '=', '1')
+		->get();
 		$start = $old_date[0]->year.'-09-01';
 		$start_time = new Datetime($start);
 		$date = new Datetime();
@@ -54,31 +54,31 @@ Route::group(['middleware' => ['web']], function () {
 		}
 
 		$lessons = DB::table('work_plan_lessons')
-			->select('name')
-			->where('wp_id', '=', '1')
-			->where('semester', 'LIKE', '%'.$semestr.'%')
-			->get();
+		->select('name')
+		->where('wp_id', '=', '1')
+		->where('semester', 'LIKE', '%'.$semestr.'%')
+		->get();
 
 		dd($lessons);
 
 	});
 
 
-	Route::get('/excel', function(){
-		Excel::load('uploads/wp.xlsx', function($reader) {
-			$results = $reader->get();
-			echo '<table>';
-			for($i = 0; $i < count($results); $i ++){
-				echo "<tr>";
-				echo "<td>".$results[$i]['nazvanie_predmeta'].'</td>';
-				echo "<td>".$results[$i]['kredity'].'</td>';
-				echo "<td>".$results[$i]['chasy'].'</td>';
-			}
-			echo '</table>';
+Route::get('/excel', function(){
+	Excel::load('uploads/wp.xlsx', function($reader) {
+		$results = $reader->get();
+		echo '<table>';
+		for($i = 0; $i < count($results); $i ++){
+			echo "<tr>";
+			echo "<td>".$results[$i]['nazvanie_predmeta'].'</td>';
+			echo "<td>".$results[$i]['kredity'].'</td>';
+			echo "<td>".$results[$i]['chasy'].'</td>';
+		}
+		echo '</table>';
 
-			dd($results);
-		});
+		dd($results);
 	});
+});
 
 });
 
@@ -207,12 +207,27 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
 	});
 
+	// Преподаватель
+
+	Route::group(['middleware' => ['teacher']], function(){
+
+		Route::get('/lesson/{id}/edit', [
+			'uses' => 'TeacherController@edit_lesson',
+			'as' => 'edit.lesson'
+			]);
+
+	});
+
 	// Все пользователи
 
-Route::get('/', [
-	'uses' => 'OveralController@index',
-	'as' => 'home'
-	]);
+	Route::get('/', [
+		'uses' => 'OveralController@index',
+		'as' => 'home'
+		]);
 
+	Route::get('/lesson/{id}', [
+		'uses' => 'Worklesson@lesson',
+		'as' => 'single.lesson'
+		]);
 
 });

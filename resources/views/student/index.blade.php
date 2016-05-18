@@ -56,12 +56,12 @@
 							<p>Лабораторные:<span>4</span></p>
 							<p>Лекции:<span>4</span></p>
 						</div>
-						<a href="#" class="btn btn_success">Перейти</a>
+						<a href="{{route ('single.lesson', $lesson['id'])}}" class="btn btn_success">Перейти</a>
 					</div>
 				</div>
+				@endforeach
+				@endif
 			</div>
-			@endforeach
-			@endif
 		</div>
 	</div>
 </div>

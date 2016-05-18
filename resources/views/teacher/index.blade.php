@@ -14,9 +14,9 @@
 			<h3>Профиль польователя</h3>
 			<div class="profile_container">
 				<div class="col-md-2">
-					<div class="user_img">
+{{-- 					<div class="user_img">
 						<img src="" alt="" width="150" height="150">
-					</div>
+					</div> --}}
 				</div>
 				<div class="col-md-6">
 					<div class="user_info">
@@ -28,13 +28,39 @@
 						</ul>
 
 						<ul>
-							<li>Телефон: <span>+380*********</span></li>
-							<li>E-mai: <span>*******@****.**</span></li>
+							<li>Телефон: <span>{{Auth::user()->phone}}</span></li>
+							<li>E-mai: <span>{{Auth::user()->email}}</span></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-md-3"></div>
 				<div class="clr"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Lessons -->
+
+<div class="container">
+	<div class="row">
+		<div class="lessons">
+			<h3>Список предметов</h3>
+			<div id="lessons">					
+				@if(count($lessons)>0)
+				@foreach($lessons as $lesson)
+				<div class="col-md-3">
+					<div class="lesson">
+						<p class="lesson_title">{{$lesson['name']}}</p>
+						<div class="lesson_info">
+							<p>Лабораторные:<span>4</span></p>
+							<p>Лекции:<span>4</span></p>
+						</div>
+						<a href="{{route ('single.lesson', $lesson['id'])}}" class="btn btn_success">Перейти</a>
+					</div>
+				</div>
+				@endforeach
+				@endif
 			</div>
 		</div>
 	</div>

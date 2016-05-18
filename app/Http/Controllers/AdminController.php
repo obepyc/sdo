@@ -15,6 +15,7 @@ use App\Student;
 use App\Workplan;
 use App\Lesson;
 use App\WorkplanLesson;
+use App\Worklesson;
 
 class AdminController extends Controller{
 
@@ -282,10 +283,13 @@ class AdminController extends Controller{
 		if($request->file('wp')->extension() == 'xls' || $request->file('wp')->extension() == 'xlsx'){
 
 
-			\Excel::load($file->path(), function($reader) {
+			\Excel::load($request->file('wp')->path(), function($reader) {
 				$results = $reader->get();
 				for($i = 0; $i < count($results); $i ++){
-					Lesson::create(['name' => $results[$i]['nazvanie_predmeta']]);
+					$add = Lesson::create(['name' => $results[$i]['nazvanie_predmeta']]);
+					if($add->save()){
+						Worklesson::create(['lesson_id' => $add->id]);
+					}
 				}
 			});
 			return redirect()->back()->with('success', 'Добавление прошло успешно');
@@ -310,7 +314,7 @@ class AdminController extends Controller{
 		})
 		->get();
 
-		return view('admin.add_WP_lessons', ['lessons' => $lessons, 'groups' => $groups]);
+		return view('admin.add_WP_lessons', ['lessons' => $lessons, 'groups' => $groups])->with('info', 'Перед добавлением предметов в рабочий план, добавьте предметы в справочник!');
 	}
 
 	public function addWP_lesson(Request $request){

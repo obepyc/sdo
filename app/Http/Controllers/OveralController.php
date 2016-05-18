@@ -20,7 +20,21 @@ class OveralController extends Controller{
 
 		}elseif(Auth::user()->type == '2'){
 
-			return view("teacher.index");
+			$lessons = DB::table('lesson_teachers')->select('work_lesson_id as id')->where('user_id', '=', Auth::user()->id)->get();
+
+			$lesson = [];
+
+			for($i = 0; $i < count($lessons); $i ++){
+				$les = DB::table('work_lesson')->select('lesson_id as id')->where('id', '=', $lessons[$i]->id)->get();
+				$les = DB::table('lessons')->select('id', 'name')->where('id', '=',$les[0]->id)->get();
+				$lesson[$i]['id'] = $les[0]->id;
+				$lesson[$i]['name'] = $les[0]->name;
+
+			}
+
+			return view("teacher.index", [
+				'lessons' => $lesson
+				]);
 
 		}elseif(Auth::user()->type == '3'){
 
